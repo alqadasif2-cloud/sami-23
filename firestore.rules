@@ -130,5 +130,11 @@ service cloud.firestore {
     match /user_warnings/{warningId} {
       allow read, write: if false;
     }
+
+    // 12. Server Secrets & Cloud Infrastructure Configuration
+    // Zero-Trust: Strictly forbidden for all client requests (read & write = false)
+    match /server_secrets/{secretId} {
+      allow read, write: if false;
+    }
   }
 }
